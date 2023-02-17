@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load   i18n static %}
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <!--<body class="container bg-body" style="background-image: url('/static/img/bg-5.fw.png')">-->
-<body class="container bg-light">
+<body class="container bg-light" style="background-image: url('{% static 'bg-gray.png' %}')" >
 <div class="banner text-center"><h3></h3></div>
 <div class="container">
 
@@ -32,7 +33,7 @@
 
 
 </div>
-<div class="container bg-white">
+<div class="container bg-white " style="background-image: url('{% static 'bg-gray.png' %}')">
     {% block nav %}
 
     {% endblock %}

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class student_info(models.Model):
     #基本信息
@@ -90,3 +90,13 @@ class student_info(models.Model):
     FamilyAc_m_photo = models.ImageField( null=True,blank=True)
     FamilyAc_p_photo = models.ImageField( null=True,blank=True)
     security = models.ImageField( null=True,blank=True)
+
+
+class File(models.Model):
+    name = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    upload_time = models.DateTimeField(auto_now_add=True)
+    file_size = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.name

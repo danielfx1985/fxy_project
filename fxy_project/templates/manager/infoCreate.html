@@ -1,5 +1,6 @@
 {% extends 'manager/base.html' %}
 {% load crispy_forms_tags %}
+{% load   i18n static %}
 {% block main %}
     <!--<div class="container">
         <div class="row row-cols-2">
@@ -10,8 +11,7 @@
         </div>
     </div>-->
     <!--  <form>{{ form|crispy}}</form>-->
-
-    <div class="container bg-white ">
+    <div class="container bg-white " style="background-image: url('{% static 'bg-gray.png' %}')">
 
         <nav class="row justify-content-xl-center" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb col-4 fs-4">

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.views.generic import TemplateView
 from rest_framework import routers
-from .views  import one_info,index ,export_xls,addNewStu,add_newstu_success,student_info_ListView,searchStuInfo,export_xlsx,student_info_TableList,student_info_create,student_info_Update,student_info_Delete,stuInfoList_API,export_students_xls
+from .views  import one_info,index ,export_xls,add_newstu_success,student_info_ListView,searchStuInfo,export_xlsx,student_info_TableList,student_info_create,student_info_Update,student_info_Delete,stuInfoList_API,export_students_xls
 stuInfo_list=stuInfoList_API.as_view(
     {'get':'list',
      'post':'create'}

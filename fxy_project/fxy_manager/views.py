@@ -12,9 +12,10 @@ from .forms import  addInfoForm
 # Create your views here.
 from django.http import HttpResponse
 from django.views import generic
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView,ListView,DetailView
 from .tables import StuInfoTable
-from .models import student_info
+from .models import student_info,File
 import logging
 from rest_framework import serializers,viewsets,generics
 from rest_framework.views import APIView
@@ -26,13 +27,15 @@ import datetime
 import django_excel as excel
 from django.db.models import F
 import pyexcel
+from django.db.models import Q
+
 
 def export_xls(request):
     if request.method=="GET":
         print("requets=GET: " ,request.GET.get('name'))
-
+    #pk=request.GET.get('pk')
    # print(" self  :  ",self.request)
-    data_excel=student_info.objects.filter(name='王宗仁')#.annotate(new_name=F('name')).values('姓名')
+    data_excel=student_info.objects.filter(pk=request.GET.get('pk'))#.annotate(new_name=F('name')).values('姓名')
     col_names=["name","minzu","birth_date","age","tel","adress","dhamma_name","title2","teacher_id"]
     return excel.make_response_from_query_sets(data_excel,col_names,'xlsx',status=200,file_name='tests')
    ## return excel.make_response_from_a_table(books,'xls',status=200,file_name='tests')
@@ -154,26 +157,6 @@ def add(request):
 def add_newstu_success(request):
     return  render(request,'manager/add_newstu_success.html')
 '''
-def addNewStu(request):
-    if request.method=="POST":
-        form=addInfoForm(request.POST)
-
-        form2=addFamilyInfoForm(request.POST)
-        if  all([form.is_valid(),form2.is_valid()]):
-
-            post=form.save()
-            post2=form2.save()
-           # form2.is_valid()
-            return redirect('add_newstu_success')
-        else:
-            for field in form2:
-                print("Field Error:", field.name,  field.errors)
-            #return redirect('/manager/add_newstu_success')
-    else:
-        form=addInfoForm()
-        form2 = addFamilyInfoForm()
-    return render(request,'manager/infoCreate.html',{'form':form,'form2':form2})
-
 
 def add_newstu_success(request):
     return  render(request,'manager/add_newstu_success.html')
@@ -188,6 +171,19 @@ def searchStuInfo(request):
     stuInfo=student_info.objects.filter(name__icontains=q)
 
     return render(request, 'manager/infoList.html', {'student_info': stuInfo})
+
+def searchStuInfo(request):
+    q=request.GET.get('q')
+    error_msg=''
+    print('q',q)
+    if not q:
+        error_msg = '请输入关键词'
+        return HttpResponse("请输入关键词!")
+    stuInfo=student_info.objects.filter(Q(name__icontains=q)|Q(tel__icontains=q)|Q(dhamma_name__icontains=q)|Q(adress__icontains=q)
+                                        |Q(sila_teacher__icontains=q)|Q(monk_temple__icontains=q)|Q(graduate_school__icontains=q))
+
+    return render(request, 'manager/infoList.html', {'student_info': stuInfo})
+
 
 '''
 class TableView(ExportMixin, tables.SingleTableView):
@@ -233,3 +229,16 @@ def export_students_xls(request,pk):
             ws.write(row_num, col_num, row[col_num], font_style)
     wb.save(response)
     return response
+
+class FileView(CreateView, UpdateView, DeleteView):
+    model = File
+    fields = ['name', 'user', 'upload_time', 'file_size']
+    template_name = 'file_manager.html'
+
+    def get(self, request, **kwargs):
+        # do something
+        return super().get(request, **kwargs)
+
+    def post(self, request, **kwargs):
+        # do something
+        return super().post(request, **kwargs)

@@ -22,14 +22,15 @@
                       type="button"
                       role="tab" aria-controls="nav-contact" aria-selected="false">档案文件下载
               </button>-->
+
             <form method="get" class="d-flex" role="search" action="/manager/searchStu">
-                <input name="q" class="form-control-sm me-2" type="search" placeholder="输入学生姓名搜索" aria-label="Search">
+                <input name="q" class="form-control-sm me-2" type="search" placeholder="输入学生信息搜索" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">搜索</button>
             </form>
-            <button class="btn btn-outline-success" type="submit">高级搜索</button>
+         <!--   <button class="btn btn-outline-success" type="submit">高级搜索</button>-->
             <span>  &nbsp;  </span><a class="btn btn-outline-success" href="/manager/student_info"> 所有学生</a>
             <span>  &nbsp;  </span><a class="btn btn-outline-success" href="/manager/add"> 录入新学生</a>
-            <button class="btn btn-outline-success" type="submit">全部导出</button>
+            <button class="btn btn-outline-success" type="submit">导出页面名单</button>
             <a class="d-none" href="/manager/export_xlsx">Download --XLSX</a>
 
         </div>
@@ -71,7 +72,7 @@
                             <td>{{ col.hukou }}</td>
 
                             <td>{{ col.adress }}</td>
-                            <td><a>修改 </a><a href="/manager/{{ col.id }}/delete"> 删除</a><a> 导出 </a></td>
+                            <td><a>修改 </a><a href="/manager/{{ col.id }}/delete"> 删除</a><a href="/manager/{{ col.id }}/export_xls"> 导出 </a></td>
                         </tr>
                     {% endfor %}
                 </table>
