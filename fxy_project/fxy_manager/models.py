@@ -91,6 +91,27 @@ class student_info(models.Model):
     FamilyAc_p_photo = models.ImageField( null=True,blank=True)
     security = models.ImageField( null=True,blank=True)
 
+class teacher_info(models.Model):
+    objects = models.Manager()
+    name = models.CharField(verbose_name='姓名', max_length=500, default="")  # 姓名
+    pname = models.CharField(verbose_name='曾用名', max_length=500, default="")  # 曾用名
+    birth_date = models.DateTimeField()  # 出生日期
+    minzu = models.CharField(max_length=50, default="傣");  # 民族
+    jiguan = models.CharField(max_length=50, default="");  # 籍贯
+    cxb = (('男', '男'), ('女', '女'))
+    xb = models.CharField(max_length=10,choices=cxb, default="男")  # 性别
+    zm = (('党员', '党员'), ('团员', '团员'), ('群众', '群众'))
+    zzmm = models.CharField(max_length=10, choices=zm, default="群众")  # 政治面貌
+    rdsj = models.DateTimeField()   # 入党时间
+    whcd = models.CharField(max_length=50, default="");  # 文化程度
+    hy = (('未婚', '未婚'), ('已婚', '已婚'))
+    hyzk = models.CharField(max_length=50, choices=hy,default="");  # 婚姻状况
+    age = models.IntegerField()  # 年龄
+    sfid = models.CharField("身份证号码", default="", max_length=18,
+                            # unique = True, validators = [IDValidator],
+                            null=True, blank=True)
+    tel = models.CharField(max_length=150, default="")  # 联系电话
+
 
 class File(models.Model):
     name = models.CharField(max_length=100)

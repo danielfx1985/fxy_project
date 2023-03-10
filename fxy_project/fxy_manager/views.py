@@ -15,7 +15,7 @@ from django.views import generic
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView,ListView,DetailView
 from .tables import StuInfoTable
-from .models import student_info,File
+from .models import student_info,teacher_info,File
 import logging
 from rest_framework import serializers,viewsets,generics
 from rest_framework.views import APIView
@@ -184,6 +184,17 @@ def searchStuInfo(request):
 
     return render(request, 'manager/infoList.html', {'student_info': stuInfo})
 
+def searchTeacherInfo(request):
+    q=request.GET.get('q')
+    error_msg=''
+    print('q',q)
+    if not q:
+        error_msg = '请输入关键词'
+        return HttpResponse("请输入关键词!")
+    TeacherInfo=student_info.objects.filter(Q(name__icontains=q)|Q(tel__icontains=q)|Q(dhamma_name__icontains=q)|Q(adress__icontains=q)
+                                        |Q(sila_teacher__icontains=q)|Q(monk_temple__icontains=q)|Q(graduate_school__icontains=q))
+
+    return render(request, 'manager/infoList.html', {'student_info': stuInfo})
 
 '''
 class TableView(ExportMixin, tables.SingleTableView):
