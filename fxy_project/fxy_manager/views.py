@@ -49,6 +49,10 @@ class student_info_ListView(generic.ListView):
     model=student_info
     context_object_name='student_info'
     template_name='manager/infoList.html'
+class teacher_info_ListView(generic.ListView):
+    model=teacher_info
+    context_object_name='teacher_info'
+    template_name='manager/teachers/TeacherinfoList.html'
 
 #class stuInfo_viewSet(viewsets.ModelViewSet):
  #   queryset = student_info.objects.all()
@@ -91,6 +95,87 @@ class one_info(DetailView):
     template_name = "manager/stu_info_table.html"
     context_object_name = "stu_info"
 
+class teacher_info_create(generic.CreateView):
+    model = teacher_info
+    form_class = addInfoForm
+
+    # fields = "__all__"
+    # print("sss")
+
+    #   context_object_name='student_info_create'
+    template_name='manager/teachers/infoCreate.html'
+    success_url = "/manager/teachers/add_newTeacher_success"
+    def form_invalid(self, form):
+        logger.info('form_valid called')
+        form.instance.user = self.request.user
+        return super(student_info_create, self).form_valid(form)
+    def form_valid(self, form):
+        logger.info('form_valid called')
+        form.instance.user = self.request.user
+        return super(student_info_create, self).form_valid(form)
+
+class teacher_info_Update(generic.UpdateView):
+        model = student_info
+        form_class = addInfoForm
+        #   context_object_name='student_info_update'
+        # fields = "__all__"
+        template_name = 'manager/teachers/infoUpate.html'
+        success_url = "/manager/teachers/add_newTeacher_success"
+
+class teacher_info_Delete(generic.DeleteView):
+        model = student_info
+        template_name = 'manager/teachers/deleting.html'
+        print("deleting")
+        #   context_object_name='student_info_update'
+        fields = "__all__"
+        # template_name='manager/infoUpate.html'
+        success_message = "Deleted Successfully"
+        success_url = "/manager/teachers/add_newstu_success"
+
+
+class student_info_create(generic.CreateView):
+    model = student_info
+    form_class = addInfoForm
+
+    # fields = "__all__"
+    # print("sss")
+
+    #   context_object_name='student_info_create'
+    template_name = 'manager/infoCreate.html'
+    success_url = "/manager/add_newstu_success"
+
+    def form_invalid(self, form):
+        logger.info('form_valid called')
+        form.instance.user = self.request.user
+        return super(student_info_create, self).form_valid(form)
+
+    def form_valid(self, form):
+        logger.info('form_valid called')
+        form.instance.user = self.request.user
+        return super(student_info_create, self).form_valid(form)
+
+
+class student_info_create(generic.CreateView):
+    model = student_info
+    form_class = addInfoForm
+
+    # fields = "__all__"
+    # print("sss")
+
+    #   context_object_name='student_info_create'
+    template_name = 'manager/infoCreate.html'
+    success_url = "/manager/add_newstu_success"
+
+    def form_invalid(self, form):
+        logger.info('form_valid called')
+        form.instance.user = self.request.user
+        return super(student_info_create, self).form_valid(form)
+
+    def form_valid(self, form):
+        logger.info('form_valid called')
+        form.instance.user = self.request.user
+        return super(student_info_create, self).form_valid(form)
+
 
 class student_info_Update(generic.UpdateView):
     model=student_info
@@ -109,25 +194,12 @@ class student_info_Delete(generic.DeleteView):
     success_message = "Deleted Successfully"
     success_url = "/manager/add_newstu_success"
 
-class student_info_create(generic.CreateView):
-
-    model=student_info
-    form_class = addInfoForm
-   # fields = "__all__"
-    #print("sss")
 
 
- #   context_object_name='student_info_create'
-    template_name='manager/infoCreate.html'
-    success_url = "/manager/add_newstu_success"
-    def form_invalid(self, form):
-        logger.info('form_valid called')
-        form.instance.user = self.request.user
-        return super(student_info_create, self).form_valid(form)
-    def form_valid(self, form):
-        logger.info('form_valid called')
-        form.instance.user = self.request.user
-        return super(student_info_create, self).form_valid(form)
+
+
+
+
 def student_info_TableList(request):
 
     table=StuInfoTable(student_info.objects.all())
@@ -191,10 +263,10 @@ def searchTeacherInfo(request):
     if not q:
         error_msg = '请输入关键词'
         return HttpResponse("请输入关键词!")
-    TeacherInfo=student_info.objects.filter(Q(name__icontains=q)|Q(tel__icontains=q)|Q(dhamma_name__icontains=q)|Q(adress__icontains=q)
-                                        |Q(sila_teacher__icontains=q)|Q(monk_temple__icontains=q)|Q(graduate_school__icontains=q))
+    TeacherInfo=teacher_info.objects.filter(Q(name__icontains=q)|Q(jiguan__icontains=q)|Q(xb__icontains=q)|Q(zzmm__icontains=q)
+                                        |Q(hyzk__icontains=q)|Q(age__icontains=q)|Q(age__icontains=q)|Q(sfid__icontains=q)|Q(tel__icontains=q))
 
-    return render(request, 'manager/infoList.html', {'student_info': stuInfo})
+    return render(request, 'manager/teachers/TeacherinfoList.html', {'teacher_info': TeacherInfo})
 
 '''
 class TableView(ExportMixin, tables.SingleTableView):
