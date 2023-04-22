@@ -95,20 +95,20 @@ class student_info(models.Model):
 class teacher_info(models.Model):
     objects = models.Manager()
     name = models.CharField(verbose_name='姓名', max_length=500, default="")  # 姓名
-    pname = models.CharField(verbose_name='曾用名', max_length=500, default="")  # 曾用名
+    pname = models.CharField(verbose_name='曾用名', max_length=500, default="无")  # 曾用名
     cxb = (('男', '男'), ('女', '女'))
 
     xb = models.CharField(max_length=10, choices=cxb, default="男")  # 性别
-    age = models.IntegerField()  # 年龄
-    birth_date = models.DateTimeField()  # 出生日期
+    age = models.IntegerField( default=20)  # 年龄
+    birth_date = models.DateTimeField(default=None)  # 出生日期
     minzu = models.CharField(max_length=50, default="傣");  # 民族
     jiguan = models.CharField(max_length=50, default="");  # 籍贯
 
     zm = (('党员', '党员'), ('团员', '团员'), ('群众', '群众'))
     zzmm = models.CharField(max_length=10, choices=zm, default="群众")  # 政治面貌
-    rdsj = models.DateTimeField(default=None)   # 入党时间
+    rdsj = models.DateTimeField(default=None,blank=True)   # 入党时间
     whcd = models.CharField(max_length=50, default="");  # 文化程度
-    hy = (('未婚', '未婚'), ('已婚', '已婚'))
+    hy = (('未婚', '未婚'), ('已婚', '已婚'), ('离异', '离异'), ('丧偶', '丧偶'))
     hyzk = models.CharField(max_length=50, choices=hy,default="");  # 婚姻状况
 
     sfid = models.CharField("身份证号码", default="", max_length=18,
@@ -129,50 +129,51 @@ class teacher_info(models.Model):
     chinese_level_context = (('一级','一级'), ('一级甲等','一级甲等'), ('一级乙等','一级乙等'), ('二级','二级'),('二级甲等','二级甲等'), ('二级乙等','二级乙等'), ('三级','三级'), ('三级甲等','三级甲等'),('三级乙等','三级乙等'))
     chinese_level = models.CharField(max_length=100,choices=chinese_level_context,default="")  # 普通话等级证书
 
-    job1_st=DateField()#工作经历1起始时间
-    job1_ed=DateField()#工作经历1结束时间
-    job1_dw=models.CharField(max_length=100,default="",blank=True)#工作经历1单位
-    job1_pt=models.CharField(max_length=100,default="",blank=True)#工作经历1职位
-    job2_st=DateField()#工作经历1起始时间
-    job2_ed=DateField()#工作经历1结束时间
-    job2_dw=models.CharField(max_length=100,default="",blank=True)#工作经历1单位
-    job2_pt=models.CharField(max_length=100,default="",blank=True)#工作经历1职位
-    job3_st=DateField()#工作经历1起始时间
-    job3_ed=DateField()#工作经历1结束时间
-    job3_dw=models.CharField(max_length=100,default="",blank=True)#工作经历1单位
-    job3_pt=models.CharField(max_length=100,default="",blank=True)#工作经历1职位
-    job4_st=DateField()#工作经历1起始时间
-    job4_ed=DateField()#工作经历1结束时间
-    job4_dw=models.CharField(max_length=100,default="",blank=True)#工作经历1单位
-    job4_pt=models.CharField(max_length=100,default="",blank=True)#工作经历1职位
-    job5_st=DateField()#工作经历1起始时间
-    job5_ed=DateField()#工作经历1结束时间
-    job5_dw=models.CharField(max_length=100,default="",blank=True)#工作经历1单位
-    job5_pt=models.CharField(max_length=100,default="",blank=True)#工作经历1职位
+    job1_st=models.DateTimeField(default=None,null=True,blank=True)#工作经历1起始时间
+    job1_ed=models.DateTimeField(default=None,null=True,blank=True)#工作经历1结束时间
+    job1_dw=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1单位
+    job1_pt=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1职位
+    job2_st=models.DateTimeField(default=None,null=True,blank=True)#工作经历1起始时间
+    job2_ed=models.DateTimeField(default=None,null=True,blank=True)#工作经历1结束时间
+    job2_dw=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1单位
+    job2_pt=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1职位
+    job3_st=models.DateTimeField(default=None,null=True,blank=True)#工作经历1起始时间
+    job3_st=models.DateTimeField(default=None,null=True,blank=True)#工作经历1起始时间
+    job3_ed=models.DateTimeField(default=None,null=True,blank=True)#工作经历1结束时间
+    job3_dw=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1单位
+    job3_pt=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1职位
+    job4_st=models.DateTimeField(default=None,null=True,blank=True)#工作经历1起始时间
+    job4_ed=models.DateTimeField(default=None,null=True,blank=True)#工作经历1结束时间
+    job4_dw=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1单位
+    job4_pt=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1职位
+    job5_st=models.DateTimeField(default=None,null=True,blank=True)#工作经历1起始时间
+    job5_ed=models.DateTimeField(default=None,null=True,blank=True)#工作经历1结束时间
+    job5_dw=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1单位
+    job5_pt=models.CharField(max_length=100,default="",null=True,blank=True)#工作经历1职位
 
-    fm1_title = models.CharField(max_length=20,default="",blank=True) # 称谓
-    fm1_name = models.CharField(max_length=100,default="",blank=True) # 姓名
-    fm1_political_status = models.CharField(max_length=100,default="",blank=True) # 政治面貌,如中共党员
-    fm1_work_unit = models.CharField(max_length=200,default="",blank=True) # 工作单位
-    fm1_position = models.CharField(max_length=100,default="",blank=True) # 职务
+    fm1_title = models.CharField(max_length=20,default="",null=True,blank=True) # 称谓
+    fm1_name = models.CharField(max_length=100,default="",null=True,blank=True) # 姓名
+    fm1_political_status = models.CharField(max_length=100,default="",null=True,blank=True) # 政治面貌,如中共党员
+    fm1_work_unit = models.CharField(max_length=200,default="",null=True,blank=True) # 工作单位
+    fm1_position = models.CharField(max_length=100,default="",null=True,blank=True) # 职务
 
-    fm2_title = models.CharField(max_length=20,default="",blank=True) # 称谓
-    fm2_name = models.CharField(max_length=100,default="",blank=True) # 姓名
-    fm2_political_status = models.CharField(max_length=100,default="",blank=True) # 政治面貌,如中共党员
-    fm2_work_unit = models.CharField(max_length=200,default="",blank=True) # 工作单位
-    fm2_position = models.CharField(max_length=100,default="",blank=True) # 职务
+    fm2_title = models.CharField(max_length=20,default="",null=True,blank=True) # 称谓
+    fm2_name = models.CharField(max_length=100,default="",null=True,blank=True) # 姓名
+    fm2_political_status = models.CharField(max_length=100,default="",null=True,blank=True) # 政治面貌,如中共党员
+    fm2_work_unit = models.CharField(max_length=200,default="",null=True,blank=True) # 工作单位
+    fm2_position = models.CharField(max_length=100,default="",null=True,blank=True) # 职务
 
-    fm3_title = models.CharField(max_length=20,default="",blank=True) # 称谓
-    fm3_name = models.CharField(max_length=100,default="",blank=True) # 姓名
-    fm3_political_status = models.CharField(max_length=100,default="",blank=True) # 政治面貌,如中共党员
-    fm3_work_unit = models.CharField(max_length=200,default="",blank=True) # 工作单位
-    fm3_position = models.CharField(max_length=100,default="",blank=True) # 职务
+    fm3_title = models.CharField(max_length=20,default="",null=True,blank=True) # 称谓
+    fm3_name = models.CharField(max_length=100,default="",null=True,blank=True) # 姓名
+    fm3_political_status = models.CharField(max_length=100,default="",null=True,blank=True) # 政治面貌,如中共党员
+    fm3_work_unit = models.CharField(max_length=200,default="",null=True,blank=True) # 工作单位
+    fm3_position = models.CharField(max_length=100,default="",null=True,blank=True) # 职务
 
-    fm4_title = models.CharField(max_length=20,default="",blank=True) # 称谓
-    fm4_name = models.CharField(max_length=100,default="",blank=True) # 姓名
-    fm4_political_status = models.CharField(max_length=100,default="",blank=True) # 政治面貌,如中共党员
-    fm4_work_unit = models.CharField(max_length=200,default="",blank=True) # 工作单位
-    fm4_position = models.CharField(max_length=100,default="",blank=True) # 职务
+    fm4_title = models.CharField(max_length=20,default="",null=True,blank=True) # 称谓
+    fm4_name = models.CharField(max_length=100,default="",null=True,blank=True) # 姓名
+    fm4_political_status = models.CharField(max_length=100,default="",null=True,blank=True) # 政治面貌,如中共党员
+    fm4_work_unit = models.CharField(max_length=200,default="",null=True,blank=True) # 工作单位
+    fm4_position = models.CharField(max_length=100,default="",null=True,blank=True) # 职务
 
 class File(models.Model):
     name = models.CharField(max_length=100)

@@ -1,5 +1,5 @@
 from django import forms
-from .models import student_info
+from .models import student_info,teacher_info
 
 
 class addInfoForm(forms.ModelForm):
@@ -14,3 +14,9 @@ class addInfoForm(forms.ModelForm):
             "tel": "电话",
             "adress": "地址",
         }
+
+class addInfoForm_teacher(forms.ModelForm):
+    class Meta:
+        model=teacher_info
+        fields=("__all__")
+

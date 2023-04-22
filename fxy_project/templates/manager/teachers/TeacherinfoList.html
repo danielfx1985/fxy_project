@@ -26,8 +26,8 @@
                 <button class="btn btn-outline-success" type="submit">搜索</button>
             </form>
             <!--   <button class="btn btn-outline-success" type="submit">高级搜索</button>-->
-            <span>  &nbsp;  </span><a class="btn btn-outline-success" href="/manager/student_info"> 所有教职工</a>
-            <span>  &nbsp;  </span><a class="btn btn-outline-success" href="/manager/add_teacher"> 录入新教职工</a>
+            <span>  &nbsp;  </span><a class="btn btn-outline-success" href="/manager/teachers/teacher_info"> 所有教职工</a>
+            <span>  &nbsp;  </span><a class="btn btn-outline-success" href="/manager/teachers/add_teacher"> 录入新教职工</a>
             <button class="btn btn-outline-success" type="submit">导出页面名单</button>
             <a class="d-none" href="/manager/export_xlsx">Download --XLSX</a>
 
@@ -48,7 +48,7 @@
                     <th>姓名</th>
                     <th>曾用名</th>
                      <th>性别</th>
-                    <th>年龄</th>曾
+                    <th>年龄</th>
   <th>出生日期</th>
                     <th>民族</th>
                    <th>籍贯</th>
@@ -79,123 +79,23 @@
                             <td>{{ col.zzmm }}</td>
                             <td>{{ col.rdsj | date:'Y-m-d'  }}</td>
                             <td>{{ col.whcd }}</td>
+                            <td>{{ col.hyzk }}</td>
                             <td>{{ col.sfid }}</td>
                             <td>{{ col.tel }}</td>
 
 
 
-                            <td><a>修改 </a><a href="/manager/{{ col.id }}/delete"> 删除</a><a
+                            <td><a href="/manager/teachers/{{ col.id }}/update">修改 </a><a href="/manager/{{ col.id }}/delete"> 删除</a><a
                                     href="/manager/{{ col.id }}/export_xls"> 导出 </a></td>
                         </tr>
                     {% endfor %}
                 </table>
             {% endif %}
         </div>
-        <div class="tab-pane fade" id="ProfessionalInfo" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-            {% if student_info %}
-                <table data-toggle="table">
-                    <thead>
-                    <th>姓名</th>
-                    <th>法名</th>
-                    <th>教职身份</th>
-                    <th>教职人员编号</th>
-                    <th>出家年月</th>
-                    <th>出家寺院</th>
-                    <th>戒师</th>
-                    <th>操作</th>
-                    </thead>
-                    {% for col in student_info %}
-                        <tr>
-                            <td><a class=" " href="/manager/{{ col.id }}/print" role="button">
-                                {{ col.name }}
-                            </a></td>
-                            <td>{{ col.dhamma_name }}</td>
-                            <td>{{ col.title2 }}</td>
-                            <td>{{ col.teacher_id }}</td>
-                            <td>{{ col.monk_date |date:'Y-m-d' }}</td>
-                            <td>{{ col.monk_temple }}</td>
-                            <td>{{ col.sila_teacher }}</td>
-                            <td><a>修改 </a><a href="/manager/{{ col.id }}/delete"> 删除</a><a> 导出 </a></td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% endif %}
-        </div>
-        <div class="tab-pane fade" id="shoolInfo" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-            {% if student_info %}
-                <table data-toggle="table">
-                    <thead>
-                    <th>姓名</th>
-                    <th>年级</th>
-                    <th>学号（国民教育）</th>
-                    <th>学号（宗教教育）</th>
-                    <th>学历层次</th>
-                    <th>学生类别</th>
-                    <th>学制</th>
-                    <th>入学日期</th>
-                    <th>是否参加中考</th>
-                    <th>毕业学校</th>
-                    <th>操作</th>
-                    </thead>
-                    {% for col in student_info %}
-                        <tr>
-                            <td><a class=" " href="/manager/{{ col.id }}/print" role="button">
-                                {{ col.name }}
-                            </a></td>
-                            <td>{{ col.grade }}</td>
-                            <td>{{ col.base_id }}</td>
-                            <td>{{ col.religion_id }}</td>
-                            <td>{{ col.study_level }}</td>
-                            <td>{{ col.student_type }}</td>
-                            <td>{{ col.school_lenth }}</td>
-                            <td>{{ col.enrol_date|date:'Y-m-d' }}</td>
-                            <td>{{ col.middle_exam }}</td>
-                            <td>{{ col.graduate_school }}</td>
-                            <td><a>修改 </a><a href="/manager/{{ col.id }}/delete"> 删除 </a><a> 导出 </a></td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% endif %}
-        </div>
-        <div class="tab-pane fade" id="shoolInfo" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-            {% if student_info %}
-                <table data-toggle="table">
-                    <thead>
-                    <th>姓名</th>
-                    <th>年级</th>
-                    <th>学号（国民教育）</th>
-                    <th>学号（宗教教育）</th>
-                    <th>学历层次（中专/静修）</th>
-                    <th>学生类别（全日制/非全日制）</th>
-                    <th>学制</th>
-                    <th>入学日期</th>
-                    <th>是否参加中考（是/否）</th>
-                    <th>毕业学校</th>
-                    <th>操作</th>
-                    </thead>
-                    {% for col in student_info %}
-                        <tr>
-                            <td><a class=" " href="/manager/{{ col.id }}/print" role="button">
-                                {{ col.name }}
-                            </a></td>
-                            <td>{{ col.grade }}</td>
-                            <td>{{ col.base_id }}</td>
-                            <td>{{ col.religion_id }}</td>
-                            <td>{{ col.study_level }}</td>
-                            <td>{{ col.student_type }}</td>
-                            <td>{{ col.school_lenth }}</td>
-                            <td>{{ col.enrol_date |date:'Y-m-d' }}</td>
-                            <td>{{ col.middle_exam }}</td>
-                            <td>{{ col.graduate_school }}</td>
-                            <td><a>修改 </a><a href="/manager/{{ col.id }}/delete"> 删除</a><a> 导出 </a></td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% endif %}
-        </div>
+
         {% comment %}
             <div class="tab-pane fade" id="familyInfo" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-                {% if student_info %}
+                {% if teacher_info %}
                     <table data-toggle="table">
                         <thead>
 
@@ -235,7 +135,7 @@
                         <th>电话</th>
 
                         </thead>
-                        {% for col in student_info %}
+                        {% for col in teacher_info %}
                             <tr>
 
                                 <td>{{ col.relationship1 }}</td>
@@ -288,30 +188,32 @@
             </div>
         {% endcomment %}
 
-        <div class="tab-pane fade" id="fileInfo" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-            {% if student_info %}
+        <div class="tab-pane fade" id="ProfessionalInfo" role="tabpanel" aria-labelledby="nav-ProfessionalInfo-tab" tabindex="0">
+            {% if teacher_info %}
                 <table data-toggle="table">
                     <thead>
-
-                    <th>袈裟证件照</th>
-                    <th>便装证件照</th>
-                    <th>身份证国徽面</th>
-                    <th>身份证人像面</th>
-                    <th>户口簿户主页</th>
-                    <th>户口簿本人页</th>
-                    <th>学生安全协议书</th>
-
+                    <th>姓名</th>
+                    <th>职称</th>
+                    <th>职务</th>
+                    <th>职级</th>
+                    <th>分管工作</th>
+                    <th>教师资格证</th>
+                    <th>普通话等级证书</th>
+                     <th>操作</th>
                     </thead>
-                    {% for col in student_info %}
+                    {% for col in teacher_info %}
                         <tr>
-
-                            <td>{{ col.jiasha_photo }}</td>
-                            <td>{{ col.clothes_photo }}</td>
-                            <td>{{ col.ID_f_photo }}</td>
-                            <td>{{ col.ID_b_photo }}</td>
-                            <td>{{ col.FamilyAc_m_photo }}</td>
-                            <td>{{ col.FamilyAc_p_photo }}</td>
-                            <td>{{ col.security }}</td>
+                            <td><a class=" " href="/manager/{{ col.id }}/print" role="button">
+                                {{ col.name }}
+                            </a></td>
+                            <td>{{ col.title }}</td>
+                            <td>{{ col.position }}</td>
+                            <td>{{ col.level }}</td>
+                            <td>{{ col.work_desc }}</td>
+                            <td>{{ col.cert }}</td>
+                            <td>{{ col.chinese_level }}</td>
+  <td><a href="/manager/teachers/{{ col.id }}/update">修改 </a><a href="/manager/{{ col.id }}/delete"> 删除</a><a
+                                    href="/manager/{{ col.id }}/export_xls"> 导出 </a></td>
 
 
                         </tr>

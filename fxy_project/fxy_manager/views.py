@@ -8,7 +8,7 @@ from django_tables2 import SingleTableView
 import django_tables2 as tables
 from django_tables2.export.views import ExportMixin
 from django_tables2.export.export import TableExport
-from .forms import  addInfoForm
+from .forms import  addInfoForm,addInfoForm_teacher
 # Create your views here.
 from django.http import HttpResponse
 from django.views import generic
@@ -97,7 +97,7 @@ class one_info(DetailView):
 
 class teacher_info_create(generic.CreateView):
     model = teacher_info
-    form_class = addInfoForm
+    form_class = addInfoForm_teacher
 
     # fields = "__all__"
     # print("sss")
@@ -107,16 +107,17 @@ class teacher_info_create(generic.CreateView):
     success_url = "/manager/teachers/add_newTeacher_success"
     def form_invalid(self, form):
         logger.info('form_valid called')
+        logger.error(form.errors.as_data())
         form.instance.user = self.request.user
-        return super(student_info_create, self).form_valid(form)
+        return super(teacher_info_create, self).form_valid(form)
     def form_valid(self, form):
         logger.info('form_valid called')
         form.instance.user = self.request.user
-        return super(student_info_create, self).form_valid(form)
+        return super(teacher_info_create, self).form_valid(form)
 
 class teacher_info_Update(generic.UpdateView):
-        model = student_info
-        form_class = addInfoForm
+        model = teacher_info
+        form_class = addInfoForm_teacher
         #   context_object_name='student_info_update'
         # fields = "__all__"
         template_name = 'manager/teachers/infoUpate.html'
@@ -232,6 +233,8 @@ def add_newstu_success(request):
 
 def add_newstu_success(request):
     return  render(request,'manager/add_newstu_success.html')
+def add_newTeacher_success(request):
+    return  render(request,'manager/teachers/add_newTeacher_success.html')
 
 def searchStuInfo(request):
     q=request.GET.get('q')
