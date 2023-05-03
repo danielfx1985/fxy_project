@@ -121,17 +121,17 @@ class teacher_info_Update(generic.UpdateView):
         #   context_object_name='student_info_update'
         # fields = "__all__"
         template_name = 'manager/teachers/infoUpate.html'
-        success_url = "/manager/teachers/add_newTeacher_success"
+        success_url = "/manager/teachers/update_teacher_success"
 
 class teacher_info_Delete(generic.DeleteView):
-        model = student_info
+        model = teacher_info
         template_name = 'manager/teachers/deleting.html'
         print("deleting")
         #   context_object_name='student_info_update'
         fields = "__all__"
         # template_name='manager/infoUpate.html'
         success_message = "Deleted Successfully"
-        success_url = "/manager/teachers/add_newstu_success"
+        success_url = "/manager/teachers/delete_teacher_success"
 
 
 class student_info_create(generic.CreateView):
@@ -184,7 +184,7 @@ class student_info_Update(generic.UpdateView):
  #   context_object_name='student_info_update'
    # fields = "__all__"
     template_name='manager/infoUpate.html'
-    success_url = "/manager/add_newstu_success"
+    success_url = "/manager/update_student_success"
 class student_info_Delete(generic.DeleteView):
     model=student_info
     template_name = 'manager/deleting.html'
@@ -193,7 +193,7 @@ class student_info_Delete(generic.DeleteView):
     fields = "__all__"
    # template_name='manager/infoUpate.html'
     success_message = "Deleted Successfully"
-    success_url = "/manager/add_newstu_success"
+    success_url = "/manager/delete_student_success"
 
 
 
@@ -234,8 +234,15 @@ def add_newstu_success(request):
 def add_newstu_success(request):
     return  render(request,'manager/add_newstu_success.html')
 def add_newTeacher_success(request):
-    return  render(request,'manager/teachers/add_newTeacher_success.html')
-
+    return  render(request,'manager/teachers/add_teacher_success.html')
+def update_student_success(request):
+    return  render(request,'manager/update_student_success.html')
+def update_teacher_success(request):
+    return  render(request, 'manager/teachers/add_teacher_success.html')
+def delete_student_success(request):
+    return  render(request,'manager/delete_student_success.html')
+def delete_teacher_success(request):
+    return  render(request, 'manager/teachers/delete_teacher_success.html')
 def searchStuInfo(request):
     q=request.GET.get('q')
     error_msg=''

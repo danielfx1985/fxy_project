@@ -84,13 +84,13 @@ class student_info(models.Model):
     fml_id_b5 = models.ImageField(null=True, blank=True)
     #文件
 
-    jiasha_photo=models.ImageField( null=True,blank=True)
-    clothes_photo = models.ImageField( null=True,blank=True)
-    ID_f_photo = models.ImageField( null=True,blank=True)
-    ID_b_photo = models.ImageField( null=True,blank=True)
-    FamilyAc_m_photo = models.ImageField( null=True,blank=True)
-    FamilyAc_p_photo = models.ImageField( null=True,blank=True)
-    security = models.ImageField( null=True,blank=True)
+    jiasha_photo=models.ImageField( null=True,blank=True,upload_to="./img/")
+    clothes_photo = models.ImageField( null=True,blank=True,upload_to="./img/")
+    ID_f_photo = models.ImageField( null=True,blank=True,upload_to="./img/")
+    ID_b_photo = models.ImageField( null=True,blank=True,upload_to="./img/")
+    FamilyAc_m_photo = models.ImageField( null=True,blank=True,upload_to="./img/")
+    FamilyAc_p_photo = models.ImageField( null=True,blank=True,upload_to="./img/")
+    security = models.ImageField( null=True,blank=True,upload_to="./img/")
 
 class teacher_info(models.Model):
     objects = models.Manager()

@@ -19,7 +19,7 @@ from django.views.generic import TemplateView
 from rest_framework import routers
 from .views import one_info, index, export_xls, add_newstu_success,add_newTeacher_success, student_info_ListView, teacher_info_ListView, \
     searchStuInfo, export_xlsx, student_info_TableList, student_info_create, student_info_Update, student_info_Delete, \
-    teacher_info_create, teacher_info_Update, teacher_info_Delete, stuInfoList_API, export_students_xls
+    teacher_info_create, teacher_info_Update, teacher_info_Delete, stuInfoList_API, export_students_xls,update_teacher_success,delete_teacher_success
 
 stuInfo_list = stuInfoList_API.as_view(
     {'get': 'list',
@@ -35,13 +35,18 @@ urlpatterns = [
     path('student_info_table/', student_info_TableList, name='student_info_table'),
     #  path('add/',addNewStu,name='add'),
     path('add/', student_info_create.as_view(), name='add'),
+    path('add_newstu_success/', add_newstu_success, name='add_newstu_success'),
     path('teachers/add_teacher/', teacher_info_create.as_view(), name='add_teacher'),
     path('<int:pk>/print', one_info.as_view(), name='print'),
-    path('teachers/<pk>/update', teacher_info_Update.as_view(), name='update'),
-    path('teachers/<pk>/delete', teacher_info_Delete.as_view(), name='delete'),
+    path('teachers/<pk>/update', teacher_info_Update.as_view(), name='updateTR'),
+    path('teachers/<pk>/delete', teacher_info_Delete.as_view(), name='deleteTR'),
     path('<pk>/update', student_info_Update.as_view(), name='update'),
     path('<pk>/delete', student_info_Delete.as_view(), name='delete'),
+
     path('teachers/add_newTeacher_success', add_newTeacher_success, name='add_newTeacher_success'),
+    path('teachers/update_teacher_success', update_teacher_success, name='update_teacher_success'),
+    path('teachers/delete_teacher_success', delete_teacher_success, name='delete_teacher_success'),
+
     path('searchStu', searchStuInfo, name='searchStuInfo'),
     # path('<pk>/export_xlsx',export_xlsx,name='export_xlsx'),
     path('api/', include(router.urls)),
