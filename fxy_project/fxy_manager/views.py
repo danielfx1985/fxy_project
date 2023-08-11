@@ -168,23 +168,50 @@ class student_info_create(generic.CreateView):
     success_url = "/manager/add_newstu_success"
 
     def form_invalid(self, form):
+        print("form_invalid--------------")
         logger.info('form_valid called')
         form.instance.user = self.request.user
         return super(student_info_create, self).form_valid(form)
 
     def form_valid(self, form):
+        print("form_valid--------------")
         logger.info('form_valid called')
         form.instance.user = self.request.user
         return super(student_info_create, self).form_valid(form)
 
-
 class student_info_Update(generic.UpdateView):
+    print("updating")
+    model = student_info
+    form_class = addInfoForm
+
+    # fields = "__all__"
+    # print("sss")
+
+    #   context_object_name='student_info_create'
+    template_name = 'manager/infoUpate.html'
+    success_url = "/manager/update_student_success"
+
+    def form_invalid(self, form):
+        print("form_invalid--------------: ",form.errors)
+        logger.info('form_valid called')
+        form.instance.user = self.request.user
+        return super(student_info_Update, self).form_valid(form)
+
+    def form_valid(self, form):
+        print("form_valid--------------")
+        logger.info('form_valid called')
+        form.instance.user = self.request.user
+        return super(student_info_Update, self).form_valid(form)
+
+'''
+class student_info_Update(generic.UpdateView):
+    print("updating")
     model=student_info
     form_class = addInfoForm
  #   context_object_name='student_info_update'
    # fields = "__all__"
     template_name='manager/infoUpate.html'
-    success_url = "/manager/update_student_success"
+    success_url = "/manager/update_student_success"'''
 class student_info_Delete(generic.DeleteView):
     model=student_info
     template_name = 'manager/deleting.html'
@@ -233,6 +260,7 @@ def add_newstu_success(request):
 
 def add_newstu_success(request):
     return  render(request,'manager/add_newstu_success.html')
+
 def add_newTeacher_success(request):
     return  render(request,'manager/teachers/add_teacher_success.html')
 def update_student_success(request):

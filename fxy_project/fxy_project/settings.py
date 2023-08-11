@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_x_^z+l8n*wk8_zq9r*r!@pmx=uf(^1_l)+&ycyabit=wi6by#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -58,15 +58,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 STATIC_URL = "/static/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = "/media/"
 
 PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
 PROJECT_ROOT = os.path.dirname(PROJECT_APP_PATH)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
 ROOT_URLCONF = 'fxy_project.urls'
+print("BASE_DIR:",BASE_DIR)
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
 
 
 TEMPLATES = [

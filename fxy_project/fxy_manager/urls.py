@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
-from .views import one_info, index, export_xls, add_newstu_success,add_newTeacher_success, student_info_ListView, teacher_info_ListView, \
+from .views import one_info, index, export_xls, add_newstu_success,update_student_success,delete_student_success,add_newTeacher_success, student_info_ListView, teacher_info_ListView, \
     searchStuInfo, export_xlsx, student_info_TableList, student_info_create, student_info_Update, student_info_Delete, \
     teacher_info_create, teacher_info_Update, teacher_info_Delete, stuInfoList_API, export_students_xls,update_teacher_success,delete_teacher_success
 
@@ -36,6 +36,8 @@ urlpatterns = [
     #  path('add/',addNewStu,name='add'),
     path('add/', student_info_create.as_view(), name='add'),
     path('add_newstu_success/', add_newstu_success, name='add_newstu_success'),
+    path('update_student_success/', update_student_success, name='update_student_success'),
+    path('delete_student_success/', delete_student_success, name='delete_student_success'),
     path('teachers/add_teacher/', teacher_info_create.as_view(), name='add_teacher'),
     path('<int:pk>/print', one_info.as_view(), name='print'),
     path('teachers/<pk>/update', teacher_info_Update.as_view(), name='updateTR'),

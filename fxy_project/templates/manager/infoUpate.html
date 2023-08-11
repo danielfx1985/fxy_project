@@ -99,7 +99,7 @@
 
             });
         </script>
-        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <form name="form" method="post" enctype="multipart/form-data">{% csrf_token %}
 
             <div id="basicInfo" class="row fade active show tab-pane justify-content-md-center">
 
@@ -107,12 +107,13 @@
                     <ul class="list-group ">
                         <!--  <li class="list-group-item bg-warning">基本信息</li>-->
 
-                        <li class="list-group-item"> 姓名：{{ form.name }}</li>
+                         <li class="list-group-item"> 姓名：{{ form.name}}</li>
                         <li class="list-group-item">民族：{{ form.minzu }}</li>
                         <li class="list-group-item">出生日期：{{ form.birth_date }}</li>
                         <li class="list-group-item">年龄：{{ form.age }}</li>
                         <li class="list-group-item">身份证：{{ form.sfid }}</li>
-                        <li class="list-group-item">电话：{{ form.tel }}</li>
+                        <li name="tel" class="list-group-item">电话：{{ form.tel }}</li>
+                        <li class="list-group-item">户口类型：{{ form.hukou }}</li>
                         <li class="list-group-item">地址：{{ form.adress }}</li>
 
                     </ul>
@@ -121,6 +122,7 @@
             <div id="religionInfo" class="row tab-pane fade justify-content-md-center">
                 <div class="col-md-5">
                     <ul class="list-group">
+
 
                         <li class="list-group-item">法名：{{ form.dhamma_name }}</li>
                         <li class="list-group-item">教职身份：{{ form.title2 }}</li>

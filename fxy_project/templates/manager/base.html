@@ -34,25 +34,24 @@
 <body class="container bg-light" style="background-image: url('{% static 'bg-gray.png' %}')" >
 {% block sidebar %}
     <!-- 侧边栏 -->
-<button class="btn   btn-outline-primary fixed-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-  系统导航
+<button class="btn btn-primary fixed-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+  <span class="fw-bold text-light">系统导航</span>
 </button>
 
-
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="sidebarLabel">佛学院教务管理系统</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<nav class="offcanvas offcanvas-start show" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel" style="--bs-offcanvas-width:350px">
+  <div class="offcanvas-header" style="background-color:#009999">
+    <h5 class="offcanvas-title text-light fw-bold" id="sidebarLabel">佛学院教务管理系统</h5>
+    <button type="button" class="btn-close text-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
+  <div class="offcanvas-body" style="background-color:#00152A">
     <ul class="list-unstyled">
-      <li><a href="#" class="link-dark">主页</a></li>
-      <li><a href="/manager/teachers/teacher_info" class="link-dark">教师信息管理</a></li>
-      <li><a href="/manager/student_info" class="link-dark">学生信息管理</a></li>
-      <li><a href="#" class="link-dark">课件管理</a></li>
+      <li class="mb-3"><a href="#" class="link-light text-decoration-none fw-bold">主页</a></li>
+      <li class="mb-3"><a href="/manager/teachers/teacher_info" class="link-light text-decoration-none fw-bold">教师信息管理</a></li>
+      <li class="mb-3"><a href="/manager/student_info" class="link-light text-decoration-none fw-bold">学生信息管理</a></li>
+      <li><a href="#" class="link-light text-decoration-none fw-bold">课件管理</a></li>
     </ul>
   </div>
-</div>
+</nav>
 {% endblock %}
 <div class="banner text-center"><h3></h3></div>
 <div class="container">
