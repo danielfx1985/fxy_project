@@ -42,7 +42,7 @@ def export_xls(request):
 
 logger = logging.getLogger(__name__)
 def index(request):
-    return  render(request,'manager/index.html')
+    return  render(request,'index.html')
 
 
 class student_info_ListView(generic.ListView):
@@ -94,6 +94,12 @@ class one_info(DetailView):
     model = student_info
     template_name = "manager/stu_info_table.html"
     context_object_name = "stu_info"
+class one_info_teacher(DetailView):
+    model = teacher_info
+    template_name = "manager/teachers/teacher_info_table.html"
+    context_object_name = "tr_info"
+
+
 
 class teacher_info_create(generic.CreateView):
     model = teacher_info
@@ -266,7 +272,7 @@ def add_newTeacher_success(request):
 def update_student_success(request):
     return  render(request,'manager/update_student_success.html')
 def update_teacher_success(request):
-    return  render(request, 'manager/teachers/add_teacher_success.html')
+    return  render(request, 'manager/teachers/update_teacher_success.html')
 def delete_student_success(request):
     return  render(request,'manager/delete_student_success.html')
 def delete_teacher_success(request):
