@@ -67,7 +67,7 @@
                     </thead>
                     {% for col in teacher_info %}
                         <tr>
-                            <td><a class=" " href="/manager/{{ col.id }}/print" role="button">
+                            <td><a class=" " href="/manager/teachers/{{ col.id }}/print" role="button">
                                 {{ col.name }}
                             </a></td>
                             <td>{{ col.pname }}</td>
@@ -203,7 +203,7 @@
                     </thead>
                     {% for col in teacher_info %}
                         <tr>
-                            <td><a class=" " href="/manager/{{ col.id }}/print" role="button">
+                            <td><a class=" " href="/manager/teachers/{{ col.id }}/print" role="button">
                                 {{ col.name }}
                             </a></td>
                             <td>{{ col.title }}</td>

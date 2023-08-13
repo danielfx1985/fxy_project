@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:16px 20px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:16px 20px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky" rowspan="7">个<br>人<br>信<br>息</th>
+    <th class="tg-0pky" colspan="2">姓名</th>
+    <th class="tg-0pky" colspan="3">{{tr_info.name}}</th>
+    <th class="tg-0pky" colspan="2">性别</th>
+    <th class="tg-0pky" colspan="2">{{tr_info.xb}}</th>
+    <th class="tg-0pky" colspan="5" rowspan="4">照片   <br>    </th>
+  </tr>
+  <tr>
+    <th class="tg-0pky" colspan="2">年龄</th>
+    <th class="tg-0pky" colspan="2">{{tr_info.age}}</th>
+    <th class="tg-0pky" colspan="2">民族</th>
+    <th class="tg-0pky" colspan="3">{{tr_info.minzu}}</th>
+  </tr>
+  <tr>
+    <th class="tg-0pky" colspan="2">曾用名</th>
+    <th class="tg-0pky" colspan="2">{{tr_info.pname}}</th>
+    <th class="tg-0pky" colspan="2">文化程度</th>
+    <th class="tg-0pky" colspan="3">{{tr_info.whcd}}</th>
+  </tr>
+  <tr>
+    <th class="tg-0pky" colspan="2">政治面貌</th>
+    <th class="tg-0pky" colspan="2">{{tr_info.zzmm}}</th>
+    <th class="tg-0pky" colspan="2">入党时间 </th>
+    <th class="tg-0pky" colspan="3">{{tr_info.rdsj}}</th>
+  </tr>
+  <tr>
+    <th class="tg-0pky" colspan="3">身份证号码</th>
+    <th class="tg-0pky" colspan="11">{{tr_info.sfid}}</th>
+  </tr>
+  <tr>
+    <th class="tg-0pky">联系电话</th>
+    <th class="tg-0pky" colspan="2">{{tr_info.tel}}</th>
+    <th class="tg-0pky" colspan="2">籍贯</th>
+    <th class="tg-0pky" colspan="3">{{tr_info.jiguan}}</th>
+    <th class="tg-0pky" colspan="2">婚姻状况</th>
+    <th class="tg-0pky" colspan="4">{{tr_info.hyzk}}</th>
+  </tr>
+  <tr>
+    <th class="tg-0pky" colspan="2">地址</th>
+    <th class="tg-0pky" colspan="12">{{tr_info.adress}}</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky" rowspan="3">教<br>职<br>信<br>息</td>
+    <td class="tg-0pky" colspan="2">职称</td>
+    <td class="tg-0pky" colspan="3">{{tr_info.title}}</td>
+    <td class="tg-0pky" colspan="2">职务</td>
+    <td class="tg-0pky" colspan="2">{{tr_info.position}}</td>
+    <td class="tg-0pky" colspan="2">职级</td>
+    <td class="tg-0pky" colspan="3">{{tr_info.level}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="2">分管工作</td>
+    <td class="tg-0pky" colspan="3">{{tr_info.work_desc}}</td>
+    <td class="tg-0pky" colspan="3">教师资格证</td>
+    <td class="tg-0pky" colspan="6">{{tr_info.cert}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">普通话等级证书</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.chinese_level}}</td>
+    <td class="tg-0pky" colspan="6"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" rowspan="7">工<br>作<br>经<br>历</td>
+    <td class="tg-0pky" colspan="4">单位</td>
+    <td class="tg-0pky" colspan="2">职位</td>
+    <td class="tg-0pky" colspan="4">起始时间</td>
+    <td class="tg-0pky" colspan="4">结束时间</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">{{tr_info.job1_dw}}</td>
+    <td class="tg-0pky" colspan="2">{{tr_info.job1_pt}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job1_st}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job1_ed}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">{{tr_info.job2_dw}}</td>
+    <td class="tg-0pky" colspan="2">{{tr_info.job2_pt}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job2_st}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job2_ed}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">{{tr_info.job3_dw}}</td>
+    <td class="tg-0pky" colspan="2">{{tr_info.job3_pt}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job3_st}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job3_ed}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">{{tr_info.job4_dw}}</td>
+    <td class="tg-0pky" colspan="2">{{tr_info.job4_pt}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job4_st}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job4_ed}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4">{{tr_info.job5_dw}}</td>
+    <td class="tg-0pky" colspan="2">{{tr_info.job5_pt}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job5_st}}</td>
+    <td class="tg-0pky" colspan="4">{{tr_info.job5_ed}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" colspan="4"></td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="4"></td>
+    <td class="tg-0pky" colspan="4"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky" colspan="4"></td>
+    <td class="tg-0pky" colspan="2"></td>
+    <td class="tg-0pky" colspan="4"></td>
+    <td class="tg-0pky" colspan="4"></td>
+  </tr>
+</tbody>
+</table>
+{#<button style="font-size:30px" onclick="window.print();return false;">打印此页</button>#}
+
+</body>
+</html>
