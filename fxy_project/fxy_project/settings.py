@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-_x_^z+l8n*wk8_zq9r*r!@pmx=uf(^1_l)+&ycyabit=wi6by#
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+LOGIN_REDIRECT_URL = '/manager/student_info'
 ALLOWED_HOSTS = ["*"]
 
 

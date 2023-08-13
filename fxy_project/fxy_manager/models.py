@@ -6,6 +6,7 @@ class student_info(models.Model):
     #基本信息
     objects = models.Manager()
     name = models.CharField(verbose_name='姓名',max_length=500,default="")  # 姓名
+    shengao =models.FloatField(verbose_name="身高",max_length=200,default=165)
     minzu = models.CharField(max_length=50,default="傣");  # 民族
     birth_date = models.DateTimeField()  # 出生日期
     age = models.IntegerField()  # 年龄
